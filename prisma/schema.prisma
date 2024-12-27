@@ -1,0 +1,23 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+//prisma migrations are needed to introduce new data in db 
+
+
+model User{
+  id String @id @default(cuid())
+  name String 
+  email String @unique 
+  password String 
+  role Boolean @default(false) // role will define it as admin or user
+  //let's test this 
+}
