@@ -5,6 +5,7 @@ import { CiHeart } from "react-icons/ci";
 import { IoBagOutline } from "react-icons/io5";
 import { HiOutlineBars3, HiXMark } from "react-icons/hi2";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
   return (
@@ -16,6 +17,7 @@ const Navbar = () => {
 };
 
 const DesktopView = () => {
+  const router = useRouter();
   return (
     <nav className="bg-white shadow-md fixed top-0 left-0 w-full z-50 lg:px-12 hidden md:block">
       <div className="w-full flex items-center justify-between py-4 px-6">
@@ -60,7 +62,10 @@ const DesktopView = () => {
           <button className="p-2 rounded-full hover:bg-gray-100">
             <IoBagOutline className="text-2xl text-gray-600 font-medium" />
           </button>
-          <button className="bg-red-500 text-white px-4 py-2 rounded-full hover:bg-red-600">
+          <button
+            className="bg-red-500 text-white px-4 py-2 rounded-full hover:bg-red-600"
+            onClick={() => router.push("/login")}
+          >
             Sign In
           </button>
         </div>
@@ -74,6 +79,8 @@ const MobileView = () => {
   const handleSideMenu = () => {
     setOpenSideBar((prev) => !prev);
   };
+
+  const router = useRouter();
 
   return (
     <>
@@ -135,7 +142,12 @@ const MobileView = () => {
             Kids
           </a>
 
-          <button className=" bg-red-500 mt-4 text-white px-6 py-2 rounded-lg hover:bg-red-600">
+          <button
+            className=" bg-red-500 mt-4
+           text-white px-6 py-2
+            rounded-lg hover:bg-red-600"
+            onClick={() => router.push("/login")}
+          >
             Sign In
           </button>
         </div>
